@@ -1,4 +1,4 @@
-﻿// Just Check Length And Show Modal
+﻿// Just Check Length And Show Modal - Version 1
 const $ = document;
 const textInputElement = $.querySelector(".username");
 const passwordInputElement = $.querySelector(".password");
@@ -21,7 +21,7 @@ function dataValidation() {
     }, 3000);
 }
 
-// A Dynamic Form And character Validation Based Nn Length And Warning Display
+// A Dynamic Form And character Validation Based Nn Length And Warning Display - Version 2
 const divFormValidationInputElement = $.querySelector(".formvalidation");
 const spanUserNameElement = $.querySelector(".username-livevalidation");
 const spanPasswordElement = $.querySelector(".password-livevalidation");
