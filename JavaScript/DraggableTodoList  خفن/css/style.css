@@ -116,7 +116,7 @@ body {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.modal .body {
+.modal #body-form {
   padding: 0.75rem;
 }
 
@@ -146,4 +146,5 @@ body {
   color: #f3f3f3;
   font-size: 1.25rem;
   border: none;
+  cursor: pointer;
 }
