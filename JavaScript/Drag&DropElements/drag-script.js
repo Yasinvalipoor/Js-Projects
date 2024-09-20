@@ -8,9 +8,11 @@ function dragStartHandler(event){
 }
 
 function dropHandler(event){
+    event.preventDefault(); // Prevent the default behavior on drop
     let targetId = event.dataTransfer.getData('elemId');
     let targetElement = $.getElementById(targetId);
-    dropBoxElement.append(targetElement);    
+    console.log(targetElement);
+    dropBoxElement.appendChild(targetElement);    
 }
 
 function dragOverHandler(event){
