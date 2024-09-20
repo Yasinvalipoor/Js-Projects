@@ -9,19 +9,39 @@
     <title>Form Validation</title>
 </head>
 
+<style>
+    .formvalidation {
+        position: relative;
+    }
+    .username-livevalidation,
+    .password-livevalidation {
+        color: red;
+        font-size: 13px;
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        margin-inline-start: 5px;
+        display: none;
+    }
+</style>
+
 <body>
     <div class="login-page">
         <div class="form">
+            <div class="formvalidation">
                 <input type="text" placeholder="username" class="username" />
+                <span class="username-livevalidation">Must contain at least 12 characters</span>
+            </div>
+            <div class="formvalidation">
                 <input type="password" placeholder="password" class="password" />
-                <button onclick="dataValidation()">login</button>
-                <p class="message">Not registered? <a>Create an account</a></p>
+                <span class="password-livevalidation">Must contain at least 8 characters</span>
+            </div>
+            <button style="margin-top: 1rem;" onclick="dataValidation()">login</button>
+            <p class="message">Not registered? <a>Create an account</a></p>
         </div>
     </div>
-
     <div class="modal"><!--For Showing Message From Js--></div>
     <script src="js/script.js"></script>
-
 </body>
 
 </html>
