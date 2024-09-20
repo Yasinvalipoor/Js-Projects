@@ -1,0 +1,78 @@
+/* // ----------------------------- Todo List Project Start--------------------------- */
+
+body {
+    background-color: #353f5b;
+}
+
+.container {
+    max-width: 400px;
+    margin-top: 90px;
+    margin-top: 10rem;
+}
+
+.search i {
+    position: absolute;
+}
+
+.search {
+    position: relative;
+}
+
+.icon {
+    padding: 10px;
+    left: 0;
+}
+
+.input-field {
+    text-align: center;
+}
+
+input[type="text"],
+input[type="text"]:focus {
+    color: #fff;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+}
+
+.todos li {
+    background: #423a6f;
+}
+
+.delete {
+    cursor: pointer;
+}
+
+.filtered {
+    display: none !important;
+}
+
+
+
+#custom-alert {
+    display: none;
+    position: fixed;
+    top: 3rem;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#custom-alert.show {
+    display: block;
+    opacity: 1;
+}
+
+#custom-alert.hide {
+    opacity: 0;
+}
+
+/* // ----------------------------- FIXME List Project End--------------------------- */
