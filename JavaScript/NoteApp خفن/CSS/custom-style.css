@@ -1,13 +1,12 @@
-/* fallback */
 @font-face {
-    font-family: 'Material Icons';
+    font-family: "Material Icons";
     font-style: normal;
     font-weight: 400;
-    src: url(../Font/font.woff2) format('woff2');
+    src: url(../Font/font.woff2) format("woff2");
 }
 
 .material-icons {
-    font-family: 'Material Icons';
+    font-family: "Material Icons";
     font-weight: normal;
     font-style: normal;
     font-size: 35px;
@@ -18,7 +17,7 @@
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
-    -webkit-font-feature-settings: 'liga';
+    -webkit-font-feature-settings: "liga";
     -webkit-font-smoothing: antialiased;
 }
 
@@ -27,7 +26,6 @@ noteList {
     height: 400px;
     overflow: scroll;
     width: 100%;
-
 }
 
 .within-list {
@@ -112,46 +110,16 @@ notePad {
     cursor: pointer;
 }
 
-.orange {
-    background-color: #ffb74d;
-}
-
-.banana {
-    background-color: #FFFA81;
-}
-
-.honeydew {
-    background-color: #D5FA80;
-}
-
-.flora {
-    background-color: #78F87F;
-}
-
-.aqua {
-    background-color: #79FBD6;
-}
-
-.ice {
-    background-color: #79FDFE;
-}
-
-.sky {
-    background-color: #7AD6FD;
-}
-
-.orchid {
-    background-color: #7B84FC;
-}
-
-.lavendar {
-    background-color: #D687FC;
-}
-
-.pink {
-    background-color: #FF89FD;
-}
-
+.orange {background-color: #ffb74d;}
+.banana {background-color: #fffa81;}
+.honeydew {background-color: #d5fa80;}
+.flora {background-color: #78f87f;}
+.aqua {background-color: #79fbd6;}
+.ice {background-color: #79fdfe;}
+.sky {background-color: #7ad6fd;}
+.orchid {background-color: #7b84fc;}
+.lavendar {background-color: #d687fc;}
+.pink {background-color: #ff89fd;}
 
 .delete-icon {
     position: absolute;
@@ -159,7 +127,8 @@ notePad {
     right: 10px;
     padding: 10px;
 }
-.delete-icon:hover{
+
+.delete-icon:hover {
     color: red;
     transition: 0.3s ease-in-out;
 }
