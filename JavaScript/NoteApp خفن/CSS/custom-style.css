@@ -10,7 +10,7 @@
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    font-size: 35px;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
@@ -69,8 +69,8 @@ notePad {
 
 #body-field,
 #title-field {
-    width: 100%;
-    border: none;
+    width: 90%;
+    border-width: 60%;
     outline: none;
     resize: none;
 }
@@ -112,10 +112,6 @@ notePad {
     cursor: pointer;
 }
 
-.white {
-    background-color: white;
-}
-
 .orange {
     background-color: #ffb74d;
 }
@@ -154,4 +150,16 @@ notePad {
 
 .pink {
     background-color: #FF89FD;
+}
+
+
+.delete-icon {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    padding: 10px;
+}
+.delete-icon:hover{
+    color: red;
+    transition: 0.3s ease-in-out;
 }

@@ -14,7 +14,8 @@
     <header class="top-nav blue">
         <nav class="nav-extended blue">
             <div class="nav-wrapper blue">
-                <a href="#" class="brand-logo center"><i class="fa fa-pencil-square-o" aria-hidden="true">NoteApp</i></a>
+                <a href="#" class="brand-logo center"><i class="fa fa-pencil-square-o"
+                        aria-hidden="true">NoteApp</i></a>
             </div>
     </header>
     <br />
@@ -27,17 +28,17 @@
             <div class="row">
                 <div id='color-select' class="col s12">
                     Select Note Color:
-                    <div class='color-box white'></div>
-                    <div class='color-box orange'></div>
-                    <div class='color-box banana'></div>
-                    <div class='color-box honeydew'></div>
-                    <div class='color-box flora'></div>
-                    <div class='color-box aqua'></div>
-                    <div class='color-box ice'></div>
-                    <div class='color-box sky'></div>
-                    <div class='color-box orchid'></div>
-                    <div class='color-box lavendar'></div>
-                    <div class='color-box pink'></div>
+                    <div class='color-box orange' data-color="#ffb74d"></div>
+                    <div class='color-box banana' data-color="#FFFA81"></div>
+                    <div class='color-box honeydew' data-color="#D5FA80"></div>
+                    <div class='color-box flora' data-color="#78F87F"></div>
+                    <div class='color-box aqua' data-color="aqua"></div>
+                    <div class='color-box ice' data-color="#79FDFE"></div>
+                    <div class='color-box sky' data-color="#7AD6FD"></div>
+                    <div class='color-box orchid' data-color="#7B84FC"></div>
+                    <div class='color-box lavendar' data-color="#D687FC"></div>
+                    <div class='color-box pink' data-color="#FF89FD"></div>
+                    <br />
                     <br />
                     <br />
                 </div>
@@ -47,8 +48,7 @@
                         click to edit/delete
                     </span>
                     <noteList class='card-panel'>
-                        <div id='listed'>
-                        </div>
+                        <div id='listed'></div>
                     </noteList>
                 </div>
                 <div class="col s6">
@@ -58,22 +58,22 @@
                             (Edit mode)
                         </span>
                     </div>
-                    <notepad class='card-panel'>
+                    <notepad class="card-panel">
                         <div id="note-title" class="input-field col s12">
-                            <i class="material-icons prefix">edit</i>
-                            <input id="title-field" type="text" class="validate">
-                            <label for="title-field">Add a Title</label>
+                            <i id="pen-icon" class="material-icons prefix">edit</i>
+                            <input autocomplete="off" id="title-field" type="text" class="validate">
+                            <label id="title-label" for="title-field">Add a Title</label>
                         </div>
-
                         <div id="note-body" class="input-field col s12">
-                            <i class="material-icons prefix">comment</i>
+                            <i id="text-icon" class="material-icons prefix">comment</i>
                             <textarea id="body-field" class="materialize-textarea"></textarea>
-                            <label for="body-field">Add A Note</label>
+                            <label id="body-label" class="" for="body-field">Add A Note</label>
                         </div>
                     </notepad>
                 </div>
             </div>
-            <a class="waves-effect waves-light btn red" id="btn-delete"><i class="material-icons left">delete</i>Delete</a>
+            <!-- <a class="waves-effect waves-light btn red" id="btn-delete"><i
+                    class="material-icons left">delete</i>Delete</a> -->
             <a class="waves-effect waves-light btn green" id="btn-save"><i class="material-icons left">save</i>Save</a>
     </main>
 
