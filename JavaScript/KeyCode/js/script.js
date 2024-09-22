@@ -6,6 +6,8 @@ const which = $.getElementById("which");
 const code = $.getElementById("code");
 
 document.body.addEventListener("keydown", function (event) {
+	event.preventDefault();
+
 	starter.style.display = "none";
 	heading.style.display = "flex";
 	ascii.style.display = "flex";
