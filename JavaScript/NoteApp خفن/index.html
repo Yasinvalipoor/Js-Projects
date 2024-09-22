@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title> Note App</title>
+    
+    <!-- CSS  -->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="main-style.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="white">
+    <header class="top-nav blue">
+        <nav class="nav-extended blue">
+            <div class="nav-wrapper blue">
+                <a href="#" class="brand-logo center"><i class="fa fa-pencil-square-o" aria-hidden="true">NoteApp</i></a>
+            </div>
+    </header>
+    <br />
+    <main>
+        <div class="container">
+            <h4>The Note App</H4>
+            <blockquote>
+                This App allow to add <label>Notes</label> edit and, delete a <label>Notes</label>
+            </blockquote>
+            <div class="row">
+                <div id='color-select' class="col s12">
+                    Select Note Color:
+                    <div class='color-box white'></div>
+                    <div class='color-box orange'></div>
+                    <div class='color-box banana'></div>
+                    <div class='color-box honeydew'></div>
+                    <div class='color-box flora'></div>
+                    <div class='color-box aqua'></div>
+                    <div class='color-box ice'></div>
+                    <div class='color-box sky'></div>
+                    <div class='color-box orchid'></div>
+                    <div class='color-box lavendar'></div>
+                    <div class='color-box pink'></div>
+                    <br />
+                    <br />
+                </div>
+                <div class="col s6">
+                    <b>Your Notes</b><br />
+                    <span class="brown-text">
+                        click to edit/delete
+                    </span>
+                    <noteList class='card-panel'>
+                        <div id='listed'>
+                        </div>
+                    </noteList>
+                </div>
+                <div class="col s6">
+                    <b>Your Notepad</b><br /><br />
+                    <div id="note-head">
+                        <span id="edit-mode" class="no-display brown-text">
+                            (Edit mode)
+                        </span>
+                    </div>
+                    <notepad class='card-panel'>
+                        <div id="note-title" class="input-field col s12">
+                            <i class="material-icons prefix">edit</i>
+                            <input id="title-field" type="text" class="validate">
+                            <label for="title-field">Add a Title</label>
+                        </div>
+
+                        <div id="note-body" class="input-field col s12">
+                            <i class="material-icons prefix">comment</i>
+                            <textarea id="body-field" class="materialize-textarea"></textarea>
+                            <label for="body-field">Add A Note</label>
+                        </div>
+                    </notepad>
+                </div>
+            </div>
+            <a class="waves-effect waves-light btn red" id="btn-delete"><i class="material-icons left">delete</i>Delete</a>
+            <a class="waves-effect waves-light btn green" id="btn-save"><i class="material-icons left">save</i>Save</a>
+    </main>
+</body>
+
+</html>
