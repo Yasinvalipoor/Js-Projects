@@ -14,8 +14,8 @@
         <div id="bg-layer"></div>
         <div id="player">
             <div id="player-track" class="">
-                <div id="album-name">asas</div>
-                <div id="track-name">asas</div>
+                <div id="track-name"></div>
+                <div id="singer-name"></div>
                 <div id="track-time" class="active">
                     <div id="current-time"></div>
                     <div id="track-length"></div>
@@ -26,10 +26,14 @@
                     <div id="seek-bar"></div>
                 </div>
             </div>
-            <audio src="Audio/DMT-Ashkan-Kagan.mp3"></audio>
+            <!-- <audio src="Audio/DMT-Ashkan-Kagan.mp3"></audio> -->
+            <audio id="audio-element">
+                <source src="Audio/DMT-Ashkan Kagan.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
             <div id="player-content">
                 <div id="album-art" class="">
-                    <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg" class="active" id="_1">
+                    <img src="Image/DMT.png" class="active" id="album-cover">
                     <!-- <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_2.jpg" id="_2">
                     <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_3.jpg" id="_3">
                     <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_4.jpg" id="_4">
@@ -62,6 +66,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
     <script src="script.js"></script>
 </body>
 

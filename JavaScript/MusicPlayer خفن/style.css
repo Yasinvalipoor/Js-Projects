@@ -24,7 +24,7 @@ body {
     right: -30px;
     bottom: -30px;
     left: -30px;
-    background-image: url("https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg");
+    background-image: url("Image/DMT.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
@@ -66,16 +66,16 @@ body {
     top: -92px;
 }
 
-#album-name {
-    color: #54576f;
-    font-size: 17px;
-    font-weight: bold;
-}
-
-#track-name {
+#singer-name {
     color: #acaebd;
     font-size: 13px;
     margin: 2px 0 13px 0;
+}
+
+#track-name {
+    color: #54576f;
+    font-size: 17px;
+    font-weight: bold;
 }
 
 #track-time {
