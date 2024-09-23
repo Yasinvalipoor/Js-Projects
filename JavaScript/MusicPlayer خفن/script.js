@@ -16,7 +16,10 @@ const playerTrack = _id("player-track");
 const currentTimeDisplay = _id("current-time");
 const totalDurationDisplay = _id("track-length");
 
-
+var seekBar = _id("seek-bar");
+var sArea = _id("s-area");
+var insTime = _id("ins-time");
+var sHover = _id("s-hover");
 
 const faPlay = $.querySelector(".fa-play");
 const faPause = $.querySelector(".fa-pause");
@@ -30,7 +33,8 @@ const musicSrc = [
     "Secret-Whispers-Behdad-Bahrami.mp3",
 ];
 
-musicIndex = 0;
+var musicIndex = 0;
+var duration = 0;
 
 function togglePlayPause() {
     faPlay.classList.toggle("hidden-display");
@@ -65,29 +69,6 @@ playNextBtn.addEventListener("click", function () {
 
 
 
-// audioElement.addEventListener("loadedmetadata", function () {
-//     var totalDuration = formatTime(audioElement.duration);
-//     totalDurationDisplay.textContent = totalDuration;
-// });
-
-// audioElement.addEventListener("timeupdate", function () {
-//     var currentTime = formatTime(audioElement.currentTime);
-//     currentTimeDisplay.textContent = currentTime;
-// });
-
-// function formatTime(seconds) {
-//     var minutes = Math.floor(seconds / 60);
-//     var seconds = Math.floor(seconds % 60);
-//     if (seconds < 10) { seconds = "0" + seconds; } // Condition
-//     return minutes + ":" + seconds;
-// }
-
-
-var seekBar = document.getElementById("seek-bar");
-var sArea = document.getElementById("s-area");
-var insTime = document.getElementById("ins-time");
-var sHover = document.getElementById("s-hover");
-var duration = 0; // مدت زمان کل آهنگ
 
 audioElement.addEventListener("loadedmetadata", function() {
     duration = audioElement.duration;
@@ -98,8 +79,15 @@ audioElement.addEventListener("timeupdate", function() {
     var currentTime = audioElement.currentTime;
     currentTimeDisplay.textContent = formatTime(audioElement.currentTime);
     var progress = (currentTime / duration) * 100;
-    seekBar.style.width = progress + "%";
+    seekBar.style.width = progress + "%";    
+    if (duration === currentTime) {
+        currentTimeDisplay.textContent = '0:00';
+        seekBar.style.width = 0 + "%";
+        togglePlayPause();
+    }
 });
+
+// style="left: 0px; margin-left: 0px; display: none;"
 
 // رویداد حرکت موس روی نوار جستجو برای نمایش زمان مربوطه
 sArea.addEventListener("mousemove", function(event) {
@@ -107,9 +95,25 @@ sArea.addEventListener("mousemove", function(event) {
     var offsetX = event.offsetX;
     var hoverTime = (offsetX / sAreaWidth) * duration;
     var formattedTime = formatTime(hoverTime);
+
+    // insTime
     insTime.textContent = formattedTime;
     insTime.style.left = offsetX + "px";
+    insTime.style.display = "block";
+    insTime.style.marginLeft = "-21px";
+    // sHover
+    sHover.style.width = offsetX + "px";
+    sHover.style.display = "block";
 });
+
+sArea.addEventListener("mouseleave", function() {
+    sHover.style.display = "none";
+    insTime.style.display = "none";
+    insTime.style.left = "0px";
+    insTime.style.marginLeft = "0px";
+    insTime.textContent = '';
+});
+
 
 // رویداد کلیک برای تنظیم زمان پخش
 sArea.addEventListener("click", function(event) {
@@ -119,12 +123,10 @@ sArea.addEventListener("click", function(event) {
     audioElement.currentTime = clickTime; // تنظیم زمان پخش به محل کلیک
 });
 
-// تابع برای قالب‌بندی زمان به صورت دقیقه و ثانیه
 function formatTime(seconds) {
     var minutes = Math.floor(seconds / 60);
     var seconds = Math.floor(seconds % 60);
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
+    if (seconds < 10) {seconds = "0" + seconds;}
+    if (minutes < 10) {minutes = "0" + minutes;}
     return minutes + ":" + seconds;
 }
