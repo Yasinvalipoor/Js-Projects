@@ -310,3 +310,6 @@ body {
 .button:hover i {
     color: #fff;
 }
+
+.hidden-display {display: none !important;}
+/* .active-display {display: block !important;} */
