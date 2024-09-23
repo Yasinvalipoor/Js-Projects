@@ -3,6 +3,7 @@ var $ = document;
 const playPreviousBtn = _id("play-previous");
 const play_PauseBtn = _id("play-pause-button");
 const playNextBtn = _id("play-next");
+const repeat_repeat_1_Btn = _id("repeat-repeat-1");
 // Buttons
 const albumArt = _id("album-art");
 const playerTrack = _id("player-track");
@@ -24,6 +25,8 @@ var sHover = _id("s-hover");
 // Icons
 const faPlay = $.querySelector(".fa-play");
 const faPause = $.querySelector(".fa-pause");
+const repeatIcon = $.querySelector(".repeat");
+const repeat_1_Icon = $.querySelector(".repeat-1");
 const sourceElement = $.querySelector("source");
 // Sources array
 const musicSrc = [
@@ -37,7 +40,41 @@ var duration = 0;
 var audioFile = sourceElement.src;
 var jsmediatags = window.jsmediatags;
 
+let repeatMode = 1;
+// // 1 = Off
+// // 2 = Repeat List Music 
+// // 3 = Repeat Music 
 
+const spanLineOff = document.querySelector('.span-line-off');
+
+// Function to update the UI for repeat mode
+const updateRepeatUI = (iconVisible, loop, spanVisible) => {
+    repeatIcon.classList.toggle("hidden-display", !iconVisible);
+    repeat_1_Icon.classList.toggle("hidden-display", iconVisible);
+    audioElement.loop = loop;
+    spanLineOff.classList.toggle("hidden-display", !spanVisible);
+};
+
+// Initialize the player in "Off" mode
+updateRepeatUI(true, false, true); // Set default to "Off" mode (1)
+
+// Handle the end of the audio element
+audioElement.addEventListener('ended', function () {
+    if (repeatMode === 1) { audioElement.pause(); }// Stop the player at the end and do nothing
+    else if (repeatMode === 2) { playNextSong(); }// Repeat the music list
+    else if (repeatMode === 3) {
+        audioElement.currentTime = 0;
+        audioElement.play(); // Repeat the current track
+    }
+});
+
+// Handle repeat button click to cycle through modes
+repeat_repeat_1_Btn.addEventListener("click", function () {
+    repeatMode = (repeatMode % 3) + 1; // Cycle between 1 (Off), 2 (Repeat List), 3 (Repeat Track)
+    if (repeatMode === 1) { updateRepeatUI(true, false, true); }// Off mode - enable diagonal line
+    else if (repeatMode === 2) { updateRepeatUI(true, false, false); }// Repeat playlist - hide diagonal line
+    else if (repeatMode === 3) { updateRepeatUI(false, true, false); }// Repeat current track - hide diagonal line
+});
 
 
 
@@ -48,7 +85,7 @@ play_PauseBtn.addEventListener("click", function () {
 
 playPreviousBtn.addEventListener("click", function () {
     musicIndex--;
-    if (musicIndex < 0) { musicIndex = 2; } // Condition
+    if (musicIndex < 0) { musicIndex = musicSrc.length - 1; } // Condition
     sourceElement.setAttribute("src", `Audio/${musicSrc[musicIndex]}`);
     audioElement.load();
     audioElement.play();
@@ -57,17 +94,8 @@ playPreviousBtn.addEventListener("click", function () {
 });
 
 playNextBtn.addEventListener("click", function () {
-    musicIndex++;
-    if (musicIndex > musicSrc.length - 1) { musicIndex = 0; } // Condition
-    sourceElement.setAttribute("src", `Audio/${musicSrc[musicIndex]}`);
-    audioElement.load();
-    updateCoverAndTags(sourceElement.src); // به‌روزرسانی کاور آهنگ جدید
-    audioElement.play();
-    if (faPause.classList.contains("hidden-display")) { togglePlayPause(); } // Condition
+    playNextSong();
 });
-
-
-
 
 audioElement.addEventListener("loadedmetadata", function () {
     duration = audioElement.duration;
@@ -161,6 +189,12 @@ function updateCoverAndTags(audioFile) {
     jsmediatags.read(audioFile, {
         onSuccess: function (tag) {
             var tags = tag.tags;
+            var songTitle = tags.title || "Unknown Title";
+            // console.log("Title: " + songTitle);
+            var fileFormat = audioFile.split('.').pop(); // فرمت فایل مثل mp3
+            // console.log(audioFile);
+
+            // console.log("Format: " + fileFormat);
             if (tags.picture) {
                 var imageData = tags.picture.data;
                 var base64String = "";
@@ -180,4 +214,13 @@ function updateCoverAndTags(audioFile) {
             console.log('Error: ', error.type, error.info);
         }
     });
+}
+function playNextSong() {
+    musicIndex++;
+    if (musicIndex > musicSrc.length - 1) { musicIndex = 0; } // Condition
+    sourceElement.setAttribute("src", `Audio/${musicSrc[musicIndex]}`);
+    audioElement.load();
+    updateCoverAndTags(sourceElement.src); // به‌روزرسانی کاور آهنگ جدید
+    audioElement.play();
+    if (faPause.classList.contains("hidden-display")) { togglePlayPause(); } // Condition
 }
