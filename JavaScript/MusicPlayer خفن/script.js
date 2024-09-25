@@ -34,7 +34,6 @@ const musicSrc = [
     "DMT-Ashkan Kagan.mp3",
     "Precious Little-Hiatus.mp3",
     "Secret Whispers-Behdad Bahrami.mp3",
-    'Sogand - Saat bargard 2.mp3',
     'Cigarettes After Sex - Falling In Love.mp3',
     'Canis Setare.mp3'
 ];
