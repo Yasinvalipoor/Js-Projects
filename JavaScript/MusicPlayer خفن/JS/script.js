@@ -193,12 +193,6 @@ function updateCoverAndTags(audioFile) {
     jsmediatags.read(audioFile, {
         onSuccess: function (tag) {
             var tags = tag.tags;
-            var songTitle = tags.title || "Unknown Title";
-            // console.log("Title: " + songTitle);
-            var fileFormat = audioFile.split('.').pop(); // فرمت فایل مثل mp3
-            // console.log(audioFile);
-
-            // console.log("Format: " + fileFormat);
             if (tags.picture) {
                 var imageData = tags.picture.data;
                 var base64String = "";
@@ -224,7 +218,7 @@ function playNextSong() {
     if (musicIndex > musicSrc.length - 1) { musicIndex = 0; } // Condition
     sourceElement.setAttribute("src", `Audio/${musicSrc[musicIndex]}`);
     audioElement.load();
-    updateCoverAndTags(sourceElement.src); // به‌روزرسانی کاور آهنگ جدید
+    updateCoverAndTags(sourceElement.src);
     audioElement.play();
     if (faPause.classList.contains("hidden-display")) { togglePlayPause(); } // Condition
 }
