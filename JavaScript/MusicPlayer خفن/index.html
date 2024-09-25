@@ -14,8 +14,8 @@
         <div id="bg-layer"></div>
         <div id="player">
             <div id="player-track" class="">
-                <div id="track-name"></div>
-                <div id="singer-name"></div>
+                <div id="track-name" title="Music Name"></div>
+                <div id="singer-name" title="Singer Name"></div>
                 <div id="track-time" class="active">
                     <div id="current-time"></div>
                     <div id="track-length"></div>
@@ -31,29 +31,29 @@
                 Your browser does not support the audio element.
             </audio>
             <div id="player-content">
-                <div id="album-art" class="">
+                <div id="album-art" class="" title="Music Cover">
                     <img src="Image/DMT.png" class="active" id="album-cover">
                     <div id="buffer-box">Buffering ...</div>
                 </div>
                 <div id="player-controls">
-                    <div class="control">
+                    <div class="control" title="Previous">
                         <div class="button" id="play-previous">
                             <i class="fas fa-backward"></i>
                         </div>
                     </div>
                     <div class="control">
-                        <div class="button" id="play-pause-button">
+                        <div class="button" id="play-pause-button" title="Play/Pause">
                             <i class="fas fa-play"></i>
                             <i class="fas fa-pause hidden-display"></i>
                         </div>
                     </div>
                     <div class="control">
-                        <div class="button" id="play-next">
+                        <div class="button" id="play-next" title="Next">
                             <i class="fas fa-forward"></i>
                         </div>
                     </div>
                     <div class="control">
-                        <div class="button" id="repeat-repeat-1">
+                        <div class="button" id="repeat-repeat-1" title="Repeat">
                             <span class="span-line-off-repeat hidden-display"></span>
                             <svg fill="#d6dee7" width="35px" height="35px" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class="repeat">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <div class="control">
-                        <div class="button" id="play-shuffle">
+                        <div class="button" id="play-shuffle" title="Shuffle">
                             <span class="span-line-off-shuffle hidden-display"></span>
                             <i class="fa-solid fa-shuffle"></i>
                         </div>
