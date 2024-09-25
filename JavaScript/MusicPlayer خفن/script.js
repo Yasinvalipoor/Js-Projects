@@ -4,6 +4,7 @@ const playPreviousBtn = _id("play-previous");
 const play_PauseBtn = _id("play-pause-button");
 const playNextBtn = _id("play-next");
 const repeat_repeat_1_Btn = _id("repeat-repeat-1");
+const playShuffleBtn = _id("play-shuffle");
 // Buttons
 const albumArt = _id("album-art");
 const playerTrack = _id("player-track");
@@ -33,6 +34,9 @@ const musicSrc = [
     "DMT-Ashkan Kagan.mp3",
     "Precious Little-Hiatus.mp3",
     "Secret Whispers-Behdad Bahrami.mp3",
+    'Sogand - Saat bargard 2.mp3',
+    'Cigarettes After Sex - Falling In Love.mp3',
+    'Canis Setare.mp3'
 ];
 // Variable
 var musicIndex = 0;
@@ -45,21 +49,40 @@ let repeatMode = 1;
 // // 2 = Repeat List Music 
 // // 3 = Repeat Music 
 
-const spanLineOff = document.querySelector('.span-line-off');
+const spanLineOffRepeat = document.querySelector('.span-line-off-repeat');
+const spanLineOffShuffle = document.querySelector('.span-line-off-shuffle');
+// Function to shuffle and play a random song
+const playRandomSong = () => {
+    var musicRandomIndex = Math.floor(Math.random() * musicSrc.length);
+    sourceElement.setAttribute("src", `Audio/${musicSrc[musicRandomIndex]}`);
+    audioElement.load();
+    updateCoverAndTags(sourceElement.src); // Update the song cover and tags
+    audioElement.play();
+    if (faPause.classList.contains("hidden-display")) { togglePlayPause(); } // Condition
+};
+
 
 // Function to update the UI for repeat mode
 const updateRepeatUI = (iconVisible, loop, spanVisible) => {
     repeatIcon.classList.toggle("hidden-display", !iconVisible);
     repeat_1_Icon.classList.toggle("hidden-display", iconVisible);
     audioElement.loop = loop;
-    spanLineOff.classList.toggle("hidden-display", !spanVisible);
+    spanLineOffRepeat.classList.toggle("hidden-display", !spanVisible);
 };
 
 // Initialize the player in "Off" mode
 updateRepeatUI(true, false, true); // Set default to "Off" mode (1)
+spanLineOffShuffle.classList.toggle("hidden-display", false);
 
 // Handle the end of the audio element
 audioElement.addEventListener('ended', function () {
+    // First, check if shuffle mode is active (hidden-display means shuffle is active)
+    if (spanLineOffShuffle.classList.contains("hidden-display")) {
+        playRandomSong(); // Play a random song when shuffle mode is active
+        return; // Exit to avoid executing repeat logic when shuffle is active
+    }
+
+
     if (repeatMode === 1) { audioElement.pause(); }// Stop the player at the end and do nothing
     else if (repeatMode === 2) { playNextSong(); }// Repeat the music list
     else if (repeatMode === 3) {
@@ -75,8 +98,6 @@ repeat_repeat_1_Btn.addEventListener("click", function () {
     else if (repeatMode === 2) { updateRepeatUI(true, false, false); }// Repeat playlist - hide diagonal line
     else if (repeatMode === 3) { updateRepeatUI(false, true, false); }// Repeat current track - hide diagonal line
 });
-
-
 
 play_PauseBtn.addEventListener("click", function () {
     togglePlayPause();
@@ -97,27 +118,15 @@ playNextBtn.addEventListener("click", function () {
     playNextSong();
 });
 
+// Handle shuffle button click to toggle shuffle mode
+playShuffleBtn.addEventListener('click', function () {
+    spanLineOffShuffle.classList.toggle("hidden-display");
+    // Shuffle mode toggle only. Don't play random song immediately here.
+});
+
 audioElement.addEventListener("loadedmetadata", function () {
     duration = audioElement.duration;
     totalDurationDisplay.textContent = formatTime(audioElement.duration);
-    // Solution 1
-    // var fileName = audioElement.querySelector("source").src.split("/").pop();
-    // fileName = decodeURIComponent(fileName.split(".")[0].split('-'));
-    // if (fileName.split(',').length === 2) {
-    //     var artistName = fileName.split(',')[0];
-    //     var songTitle = fileName.split(',')[1];
-    //     trackNameElement.textContent = songTitle;
-    //     singerNameElement.textContent = artistName;
-    // }
-    // Solution 2
-    // var fileName = audioElement.querySelector("source").src.split("/").pop();
-    // fileName = decodeURIComponent(fileName.split(".")[0]); // Decode the file name and remove the extension
-    // // Split the file name by the hyphen and trim whitespace
-    // var [songTitle, artistName] = fileName.split('-').map(part => part.trim());
-    // if (songTitle && artistName) {
-    //     trackNameElement.textContent = songTitle;
-    //     singerNameElement.textContent = artistName;
-    // }
 });
 
 audioElement.addEventListener("timeupdate", function () {
@@ -131,7 +140,6 @@ audioElement.addEventListener("timeupdate", function () {
         togglePlayPause();
     }
 });
-
 
 // Mouse movement event on the search bar to display the corresponding time
 sArea.addEventListener("mousemove", function (event) {
@@ -157,7 +165,6 @@ sArea.addEventListener("mouseleave", function () {
     insTime.style.marginLeft = "0px";
     insTime.textContent = '';
 });
-
 
 // Click event to set playback time
 sArea.addEventListener("click", function (event) {
@@ -224,3 +231,25 @@ function playNextSong() {
     audioElement.play();
     if (faPause.classList.contains("hidden-display")) { togglePlayPause(); } // Condition
 }
+
+
+
+// Solution 1
+// var fileName = audioElement.querySelector("source").src.split("/").pop();
+// fileName = decodeURIComponent(fileName.split(".")[0].split('-'));
+// if (fileName.split(',').length === 2) {
+//     var artistName = fileName.split(',')[0];
+//     var songTitle = fileName.split(',')[1];
+//     trackNameElement.textContent = songTitle;
+//     singerNameElement.textContent = artistName;
+// }
+
+// Solution 2
+// var fileName = audioElement.querySelector("source").src.split("/").pop();
+// fileName = decodeURIComponent(fileName.split(".")[0]); // Decode the file name and remove the extension
+// // Split the file name by the hyphen and trim whitespace
+// var [songTitle, artistName] = fileName.split('-').map(part => part.trim());
+// if (songTitle && artistName) {
+//     trackNameElement.textContent = songTitle;
+//     singerNameElement.textContent = artistName;
+// }

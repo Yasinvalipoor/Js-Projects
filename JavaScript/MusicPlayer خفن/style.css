@@ -53,7 +53,7 @@ body {
 #player-track {
     position: absolute;
     top: 0;
-    right: -40px;
+    right: -122px;
     left: 15px;
     padding: 13px 22px 10px 184px;
     background-color: #fff7f7;
@@ -158,7 +158,7 @@ body {
 
 #player-content {
     position: relative;
-    width: 150%;
+    width: 132%;
     height: 100%;
     background-color: #fff;
     box-shadow: 0 30px 80px #656565;
@@ -276,7 +276,7 @@ body {
 }
 
 .control {
-    width: 25%;
+    width: 20%;
     float: left;
     padding: 12px 0;
 }
@@ -335,7 +335,7 @@ body {
 }
 
 
-.span-line-off{
+.span-line-off-repeat{
     position: absolute;
     border-bottom: 3px solid #d6dee7;
     transform: rotate(45deg);
@@ -345,7 +345,22 @@ body {
     z-index: 1;
     transition: 0.3s ease;
 }
-#repeat-repeat-1:hover .span-line-off{
+#repeat-repeat-1:hover .span-line-off-repeat{
     border-bottom: 3px solid #fff;
 }
 
+
+#play-shuffle{
+    position: relative;
+    font-size: 27px;
+}
+.span-line-off-shuffle{
+    position: absolute;
+    border-bottom: 3px solid #d6dee7;
+    transform: rotate(45deg);
+    width: 65%;
+    bottom: 37px;
+    right: 14px;
+    z-index: 1;
+    transition: 0.3s ease;
+}
