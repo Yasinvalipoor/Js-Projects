@@ -1,3 +1,6 @@
+// Developer & Programmer Of The Professional Music Player Project, UI-UX : Mohammad Yasin Valipour
+// Github: https://github.com/Yasinvalipoor
+// Linkedin: https://www.linkedin.com/in/yasin-valipour-ivi/
 var $ = document;
 // Buttons
 const playPreviousBtn = _id("play-previous");
